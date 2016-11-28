@@ -1,0 +1,178 @@
+const express = require('express');
+const app = express();
+const request = require('request');
+const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const PORT = process.env.PORT || 8888;
+const knex = require('knex')({
+    client: 'postgres',
+    connection: {
+        host: '127.0.0.1',
+        user: 'postgres',
+        password: 'postgres',
+        database: 'Games',
+        charset: 'utf8'
+    }
+});
+
+const bookshelf = require('bookshelf')(knex);
+
+const authorize = require('./middleware/authorize');
+
+const APIKEY = 'fc08231b5b235630ae9b475fe7d311f8d0a960a7';
+
+const Game = bookshelf.Model.extend({
+    tableName: 'games',
+    skill: function () {
+        return this.belongsToMany(Skill);
+    }
+});
+
+const User = bookshelf.Model.extend({
+    tableName: 'users',
+    game: function () {
+        return this.hasMany(Game).through(Skill);
+    }
+});
+
+const Comment = bookshelf.Model.extend({
+    tableName: 'comments',
+    comment: function () {
+        return this.belongsTo(User);
+    }
+});
+
+const Skill = bookshelf.Model.extend({
+    tablename: 'skills',
+    user: function () {
+        return this.belongsToMany(User, 'user_id');
+    },
+    game: function() {
+        return this.hasMany(Game, 'game_id');
+    }
+})
+
+app.use(bodyParser.json());
+
+let options = {
+    url: 'http://www.giantbomb.com/api/search/?api_key=' + APIKEY + '&format=json&query="warcraft"&limit=9&resources=game&field_list=aliases,deck,image,name,original_game_rating,original_release_date,platforms',
+    headers: {
+        'User-Agent': 'frshocksSuperBot'
+    }
+};
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+app.get('/', (req, res) => {
+
+});
+
+app.post('/userPage', (req, res) => {
+    let username = req.body.username;
+    console.log(username);
+    User.where({ username: username }).fetch().then(user => {
+        res.json(user);
+    })
+})
+
+app.get('/search/:search', (req, res) => {
+    let searchOptions = {
+        url: 'http://www.giantbomb.com/api/search/?api_key=' + APIKEY + '&format=json&query=' + req.params.search + '&resources=game&field_list=aliases,deck,image,name,original_game_rating,original_release_date,platforms',
+        headers: {
+            'User-Agent': 'frshocksSuperBot'
+        }
+    }
+    request(searchOptions, (err, response, body) => {
+        if (!err && response.statusCode === 200) {
+            let parsedReq = JSON.parse(body);
+            let reqArray = [];
+            for (let i = 0; i < parsedReq.results.length; i++) {
+                if (parsedReq.results[i].image != undefined && parsedReq.results[i].image != null && parsedReq.results[i].image.medium_url != undefined && parsedReq.results[i].image.medium_url != null && parsedReq.results[i].platforms != null) {
+                    for (let j = 0; j < parsedReq.results[i].platforms.length; j++) {
+                        if (parsedReq.results[i].platforms[j].name === "PC") {
+                            reqArray.push({
+                                desc: parsedReq.results[i].deck,
+                                name: parsedReq.results[i].name.toUpperCase(),
+                                img: parsedReq.results[i].image.medium_url,
+                                platform: parsedReq.results[i].platforms[j].name,
+                                release: parsedReq.results[i].original_release_date,
+                                review: parsedReq.results[i].original_game_rating
+                            })
+                            new Game().save({ gameName: parsedReq.results[i].name.toUpperCase(), posterImage: parsedReq.results[i].image.medium_url, gameDescription: parsedReq.results[i].deck, releaseDate: parsedReq.results[i].original_release_date, platform: parsedReq.results[i].platforms[j].name })
+                        }
+                    }
+                }
+                else {
+                    console.log('lol oh well');
+                }
+            }
+            console.log(reqArray);
+            res.json(reqArray);
+        }
+        else {
+            console.log(err);
+        }
+    })
+})
+
+app.post('/addGame', (req, res) => {
+    let gameName = req.body.gameName;
+    let username = req.body.username;
+    let skillLevel = req.body.skillLevel;
+    console.log(gameName);
+    console.log(username);
+    console.log(skillLevel);
+    console.log('made it ayy');
+    new Skill().save({skillLevel: skillLevel})
+})
+
+// USER ACCOUNT CREATION + ENCRYPTION
+app.post('/encrypt', (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    let bio = req.body.userbio;
+    let age = req.body.age;
+    //encrypt password
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(password, salt, (err, hash) => {
+            // Store hash in your password DB. 
+            if (err) console.log(err);
+
+            new User().save({ username: username, password: hash, userBio: bio, age: age })
+
+        });
+    });
+});
+
+app.post('/login', (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    //we search our passwords folder for the file with the appropriate user info.
+    User.where({ username: username }).fetch().then((data) => {
+        //compare the plaintext password given by the user with the hashed password from the file.
+        //bcrypt.compare() will hash the password for us and compare the hashes
+        bcrypt.compare(password, data.attributes.password.toString(), function (err, result) {
+            if (result) {
+                //If the passwords match, create a token using a secret key and place the username inside the token
+                let token = jwt.sign({ username: username }, 'brainstationkey');
+                //Then send the token back to the client
+                res.json({ token: token, username: username });
+            }
+            else {
+                res
+                    .status(403)
+                    .send({ token: null });
+            }
+        });
+    })
+});
+
+app.listen(PORT, () => {
+    console.log('Server running on:' + PORT);
+    console.log('Kill server with CTRL + C');
+});

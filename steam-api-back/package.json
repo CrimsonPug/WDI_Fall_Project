@@ -1,0 +1,21 @@
+{
+  "name": "steam-api-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "bookshelf": "^0.10.2",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "knex": "^0.12.6",
+    "pg": "^6.1.0",
+    "request": "^2.79.0"
+  }
+}

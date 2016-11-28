@@ -1,0 +1,71 @@
+.App {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.searchBar {
+  width: 100%;
+  height: 50px;
+}
+
+.searchLink {
+  position: absolute;
+  top: 20px;
+  left: 17em;
+}
+
+.homeLink {
+  position: absolute;
+  top: 20px;
+  left: 21em;
+}
+
+.linkOne {
+  position: absolute;
+  top: 20px;
+  left: 24em;
+}
+
+.linkTwo {
+  position: absolute;
+  top: 20px;
+  left: 27em;
+}
+
+.searchBar form {
+  width: 15em;
+}
+
+.userLog {
+  position: absolute;
+  top: 20px;
+  right: 5em;
+}
+
+.App-header {
+  background-color: #eee;
+  height: 150px;
+  padding: 20px;
+  color: black;
+}
+
+.posterImage {
+  height: 400px;
+  width: 200px;
+}
+
+.form-group {
+  width: 25em;
+}
+
+.gameInput {
+  width: 25em;
+}
+
+.alert {
+  width: 25em;
+}
+
+h3{
+  font-size: 20px;
+}
