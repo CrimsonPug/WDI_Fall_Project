@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+//Login component, straight forward.
+
 class Login extends Component {
   constructor() {
     super();
@@ -55,41 +57,45 @@ class Login extends Component {
   render() {
     if (this.state.loggedIn === false) {
       return (
-        <div id="auth">
-          <h3>Login Form</h3>
-          <form onSubmit={this.formSubmit}>
-            <div className="form-group">
-              <input
-                onChange={this.txtFieldChange}
-                className="regForm"
-                type="text"
-                placeholder="Username"
-                name="username" />
-            </div>
-            <div className="form-group">
-              <input
-                onChange={this.txtFieldChange}
-                className="regForm"
-                type="password"
-                placeholder="Password"
-                name="password" />
-            </div>
-            <div className="form-group">
-              <button className="btn btn-primary">Login</button>
-            </div>
-          </form>
+        <div id="auth" className="container">
+          <div className="row">
+            <h3 className="col s12">Login Form</h3>
+            <form onSubmit={this.formSubmit}>
+              <div className="input-field col s6 xs12">
+                <i className="material-icons prefix">perm_identity</i>
+                <input
+                  onChange={this.txtFieldChange}
+                  className="regForm icon_prefix"
+                  type="text"
+                  placeholder="Username"
+                  name="username" />
+              </div>
+              <div className="input-field col s6 xs12">
+                <i className="material-icons prefix">vpn_key</i>
+                <input
+                  onChange={this.txtFieldChange}
+                  className="regForm"
+                  type="password"
+                  placeholder="Password"
+                  name="password" />
+              </div>
+              <div className="input-field col s12">
+                <button className="btn btn-primary">Login</button>
+              </div>
+            </form>
+          </div>
         </div>
       )
     }
-  
-  else if(this.state.loggedIn === true) {
-    return (
-      <div>
-        <h1> HAVE FUN </h1>
-      </div>
-    )
+
+    else if (this.state.loggedIn === true) {
+      return (
+        <div>
+          <h1> HAVE FUN </h1>
+        </div>
+      )
+    }
   }
-}
 }
 
 export default Login;

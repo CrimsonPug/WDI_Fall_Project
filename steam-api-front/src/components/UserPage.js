@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
 
+//Page that holds the account specific stuff, like adding games to a user's account.  Can't be accessed unless the user is validated.
 
-class UserPage extends Component {
+class AccountPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -33,32 +32,31 @@ class UserPage extends Component {
     this.setState({
       skillLevel: payload
     })
-    console.log(this.state.skillLevel);
   }
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.gameName);
-    console.log(this.state.skillLevel);
-    axios.post('http://localhost:8888/addGame', this.state).then((res)=>{
+    axios.post('http://localhost:8888/addGame', this.state).then((res) => {
       console.log(res);
     })
   }
 
   componentDidMount() {
-    axios.post('http://localhost:8888/userPage', this.state).then((res) => {
+    axios.post('http://localhost:8888/account', this.state).then((res) => {
       this.setState({
+        userId: res.data.id,
         userBio: res.data.userBio,
         age: res.data.age,
         accountCreated: res.data.created_at,
-        loading: false
+        loading: false 
       })
     })
   }
 
   componentWillMount() {
     this.setState({
-      username: localStorage.username
+      username: localStorage.username,
+      token: localStorage.authToken
     })
   }
 
@@ -75,9 +73,9 @@ class UserPage extends Component {
           <h2>Welcome {localStorage.username}!</h2>
 
           <div>
-            <h5>About</h5>
-            <p>Age {this.state.age}</p>
-            <p>Member since {this.state.accountCreated.replace(/T.*?Z/, '')}</p>
+            <h5 className="section">About</h5>
+            <p>Age: {this.state.age}</p>
+            <p>Member since: {this.state.accountCreated.replace(/T.*?Z/, '')}</p>
             <p>{this.state.userBio}</p>
           </div>
 
@@ -105,4 +103,4 @@ class UserPage extends Component {
   }
 }
 
-export default UserPage;
+export default AccountPage;

@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req,res,next) => {
 	//look for the token in the body, params and headers of the request
 	//our client app places the token in the headers, but we check all 3 just in case
-    let token = req.body.token || req.param('authorization') || req.headers['authorization'];
+    let token = req.body.token || req.params.token || req.headers['authorization'];
 	if (token) {
 		//if a token is found, try to verify using our secret key
 		jwt.verify(token, 'brainstationkey', function(err, decoded) {          

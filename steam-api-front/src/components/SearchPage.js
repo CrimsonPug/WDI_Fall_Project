@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import axios from 'axios';
+
+//Search page for games, returns all games that have similar titles to the user search query.
 
 class SearchPage extends Component {
   constructor() {
@@ -8,7 +11,13 @@ class SearchPage extends Component {
       loading: true,
       gameList: []
     }
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick(target) {
+    localStorage.setItem('gameName', target);
+  }
+
 
   componentDidMount() {
     const gameList = [];
@@ -34,14 +43,14 @@ class SearchPage extends Component {
     else {
       return (
         <div className="container">
-          <h2>Search Results</h2>
+          <h2 className="section">Search Results</h2>
 
           {gameArr.map((game) =>
             <div>
               <ul className="collection">
                 <li className="collection-item avatar">
                   <img src={game.img} className="circle" />
-                  <span className="title">{game.name}</span>
+                  <span className="title"><Link onClick={() => { this.handleClick(game.name) } } to="/game/">{game.name}</Link></span>
                   <p className="truncate">{game.desc}</p>
                 </li>
               </ul>

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import axios from 'axios';
 
-//Component that gets mounted when user clicks through game, returns all users who play the specified game.
+//Component that gets mounted when a user searches for a specific user by name.
 
-class UserSearch extends Component {
+class SpecificUser extends Component {
     constructor() {
         super();
         this.state = {
             loading: true,
-            gameName: '',
-            userList: [],
+            searchName: '',
+            userResult: [],
             skillList: []
         }
         this.takeClick = this.takeClick.bind(this);
@@ -22,33 +22,24 @@ class UserSearch extends Component {
 
     componentDidMount() {
         const userList = [];
-        const skillList = [];
-        axios.get('http://localhost:8888/game/' + localStorage.gameName).then((res) => {
-            for (let x in res.data) {
-                if (x % 2 === 0) {
-                    userList.push(res.data[x]);
-                }
-                else if (x % 2 === 1) {
-                    skillList.push(res.data[x]);
-                }
-            }
-        }).then((res) => {
+        axios.get('http://localhost:8888/specificUser/' + this.props.submission).then((res) => {
+            userList.push(res.data);
             this.setState({
-                loading: false,
-                userList: userList,
-                skillList: skillList
+                userResult: userList,
+                loading: false
             })
+            console.log(userList);
         })
     }
 
     componentWillMount() {
         this.setState({
-            gameName: localStorage.gameName
+            searchName: this.props.submission
         })
     }
 
     render() {
-        const userArr = this.state.userList;
+        const userArr = this.state.userResult;
         if (this.state.loading) {
             return <div className="progress container">
                 <div className="indeterminate"></div>
@@ -77,4 +68,4 @@ class UserSearch extends Component {
     }
 }
 
-export default UserSearch;
+export default SpecificUser;

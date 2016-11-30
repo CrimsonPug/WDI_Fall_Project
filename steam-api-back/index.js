@@ -32,7 +32,7 @@ const Game = bookshelf.Model.extend({
 const User = bookshelf.Model.extend({
     tableName: 'users',
     game: function () {
-        return this.hasMany(Game).through(Skill);
+        return this.hasMany(Game);
     }
 });
 
@@ -44,11 +44,11 @@ const Comment = bookshelf.Model.extend({
 });
 
 const Skill = bookshelf.Model.extend({
-    tablename: 'skills',
+    tableName: 'skills',
     user: function () {
         return this.belongsToMany(User, 'user_id');
     },
-    game: function() {
+    game: function () {
         return this.hasMany(Game, 'game_id');
     }
 })
@@ -65,18 +65,34 @@ let options = {
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
     next();
 });
 
-app.get('/', (req, res) => {
-
-});
-
-app.post('/userPage', (req, res) => {
+app.post('/account', authorize, (req, res) => {
     let username = req.body.username;
-    console.log(username);
+    if(username === req.decoded.username){
     User.where({ username: username }).fetch().then(user => {
-        res.json(user);
+        res.send(user);
+    })
+    }
+    else(
+        res.status(404).json({ success: false, message: 'CMON BRO WHAT YOU TRYIN?'}),
+        console.log('hah you dummie')
+    )
+})
+
+app.post('/userProfile', (req, res) => {
+    let recipient = req.body.userId;
+    let username = req.body.username;
+    let profileInfo = [];
+    User.where({ username: username }).fetch().then(user => {
+        Comment.where({ recipient_id: user.attributes.id }).fetchAll().then((comment) => {
+            for (let i = 0; i < comment.models.length; i++) {
+                profileInfo.push(comment.models[i].attributes);
+            }
+        })
+        setTimeout(() => { res.send({ user: user, profileInfo: profileInfo }) }, 250);
     })
 })
 
@@ -103,7 +119,7 @@ app.get('/search/:search', (req, res) => {
                                 release: parsedReq.results[i].original_release_date,
                                 review: parsedReq.results[i].original_game_rating
                             })
-                            new Game().save({ gameName: parsedReq.results[i].name.toUpperCase(), posterImage: parsedReq.results[i].image.medium_url, gameDescription: parsedReq.results[i].deck, releaseDate: parsedReq.results[i].original_release_date, platform: parsedReq.results[i].platforms[j].name })
+                            new Game().save({ gameName: parsedReq.results[i].name.toUpperCase(), posterImage: parsedReq.results[i].image.medium_url, gameDescription: parsedReq.results[i].deck, releaseDate: parsedReq.results[i].original_release_date, platform: parsedReq.results[i].platforms[j].name }).catch(err);
                         }
                     }
                 }
@@ -111,7 +127,6 @@ app.get('/search/:search', (req, res) => {
                     console.log('lol oh well');
                 }
             }
-            console.log(reqArray);
             res.json(reqArray);
         }
         else {
@@ -120,16 +135,77 @@ app.get('/search/:search', (req, res) => {
     })
 })
 
+app.get('/game/:game', (req, res) => {
+    const userList = [];
+    Game.where({ gameName: req.params.game }).fetch().then((game => {
+        Skill.where({ game_id: game.attributes.id }).fetchAll().then((skill) => {
+            // console.log(skill.models);
+            for (let i = 0; i < skill.models.length; i++) {
+                User.where({ id: skill.models[i].attributes.user_id }).fetch().then((user) => {
+                    userList.push(user.attributes, skill.models[i].attributes.skillLevel);
+                })
+            }
+        })
+    })).catch(function () {
+        res.status(404).send('Unable to find users.');
+    });
+    setTimeout(() => { res.send(userList) }, 1000);
+})
+
+app.get('/specificUser/:userName', (req, res) => {
+    User.where({username: req.params.userName}).fetch().then((user) => {
+        console.log(user);
+        res.send(user);
+    })
+})
+
 app.post('/addGame', (req, res) => {
     let gameName = req.body.gameName;
-    let username = req.body.username;
+    let userId = req.body.userId;
     let skillLevel = req.body.skillLevel;
-    console.log(gameName);
-    console.log(username);
-    console.log(skillLevel);
-    console.log('made it ayy');
-    new Skill().save({skillLevel: skillLevel})
+    Game.where({ gameName: gameName.toUpperCase() }).fetch().then((data) => {
+        Skill.where({ game_id: data.attributes.id, user_id: userId }).fetch().then((skill) => {
+            if (skill === null || skill === undefined) {
+                new Skill().save({ user_id: userId, game_id: data.id, skillLevel: skillLevel });
+            }
+            else {
+                res.status(404).send('dude, stop trying to save the same thing.');
+            }
+        })
+
+    })
+});
+
+app.delete('/deleteComment/:commentId,:loggedIn', (req, res) => {
+    // console.log(req.params.loggedIn);
+    // console.log(req.body);
+    Comment.where({ id: req.params.commentId }).fetch().then((comment) => {
+        if (req.params.loggedIn === comment.attributes.sender_id) {
+            comment.destroy();
+            console.log('Comment destroyed.');
+        }
+        else {
+            console.log('User doesn\'t have access to deleting this comment!');
+        }
+    });
 })
+
+app.post('/leaveComment', (req, res) => {
+    let recipient = req.body.userId;
+    let sender = req.body.onPage;
+    let comment = req.body.comment;
+    let profileInfo = [];
+    new Comment({ sender_id: sender, recipient_id: recipient, comment: comment }).save();
+    User.where({ id: req.body.userId }).fetch().then(user => {
+        Comment.where({ recipient_id: req.body.userId }).fetchAll().then((comment) => {
+            for (let i = 0; i < comment.models.length; i++) {
+                profileInfo.push(comment.models[i].attributes);
+            }
+        })
+        setTimeout(() => { res.send({ user: user, profileInfo: profileInfo }) }, 250);
+    })
+})
+
 
 // USER ACCOUNT CREATION + ENCRYPTION
 app.post('/encrypt', (req, res) => {
@@ -142,8 +218,10 @@ app.post('/encrypt', (req, res) => {
         bcrypt.hash(password, salt, (err, hash) => {
             // Store hash in your password DB. 
             if (err) console.log(err);
-
-            new User().save({ username: username, password: hash, userBio: bio, age: age })
+            console.log('new user saved');
+            new User().save({ username: username, password: hash, userBio: bio, age: age }).catch(function () {
+                res.status(404).send('Unable to register user');
+            });
 
         });
     });
