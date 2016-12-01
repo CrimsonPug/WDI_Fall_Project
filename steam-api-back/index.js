@@ -11,7 +11,7 @@ const knex = require('knex')({
         host: '127.0.0.1',
         user: 'postgres',
         password: 'postgres',
-        database: 'Games',
+        database: 'games',
         charset: 'utf8'
     }
 });
@@ -19,6 +19,8 @@ const knex = require('knex')({
 const bookshelf = require('bookshelf')(knex);
 
 const authorize = require('./middleware/authorize');
+
+app.use(express.static(_dirname + '../steam-api-front'))
 
 const APIKEY = 'fc08231b5b235630ae9b475fe7d311f8d0a960a7';
 
