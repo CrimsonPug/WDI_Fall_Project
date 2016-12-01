@@ -24,7 +24,7 @@ class App extends Component {
   logOut() {
     localStorage.removeItem('username');
     localStorage.removeItem('authToken');
-    window.location = "http://localhost:3000/";
+    window.location = "/";
   }
 
   handleSubmit(e) {
@@ -37,7 +37,7 @@ class App extends Component {
     if (localStorage.username !== null || localStorage.username !== undefined) {
       loginMessage = (
         <div>
-          <p>Logged in as <a href="http://localhost:3000/account">{localStorage.username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a className="linkPad" onClick={this.logOut}>LOGOUT</a></p>
+          <p>Logged in as <a href="/account">{localStorage.username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a className="linkPad" onClick={this.logOut}>LOGOUT</a></p>
         </div>
       )
     }

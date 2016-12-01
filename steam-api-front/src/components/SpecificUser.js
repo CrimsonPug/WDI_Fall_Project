@@ -22,7 +22,7 @@ class SpecificUser extends Component {
 
     componentDidMount() {
         const userList = [];
-        axios.get('http://localhost:8888/specificUser/' + this.props.submission).then((res) => {
+        axios.get('/specificUser/' + this.props.submission).then((res) => {
             userList.push(res.data);
             this.setState({
                 userResult: userList,

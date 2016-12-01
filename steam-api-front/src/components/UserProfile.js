@@ -46,8 +46,8 @@ class UserProfile extends Component {
     handleClick(tar) {
         let confirm = window.confirm('You sure you want to delete this comment?');
         if (confirm) {
-            axios.delete('http://localhost:8888/deleteComment/' + tar + ',' + localStorage.username);
-            window.location = "http://localhost:3000/user/";
+            axios.delete('/deleteComment/' + tar + ',' + localStorage.username);
+            window.location = "/user/";
         }
         else {
             console.log('Nice try guy!');
@@ -62,8 +62,8 @@ class UserProfile extends Component {
 
     editHandler(tar) {
         console.log(tar);
-        axios.put('http://localhost:8888/editComment/', this.state);
-        window.location = "http://localhost:3000/user/";
+        axios.put('/editComment/', this.state);
+        window.location = "/user/";
     }
 
     modalText(e) {
@@ -81,7 +81,7 @@ class UserProfile extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        axios.post('http://localhost:8888/leaveComment', this.state).then((res) => {
+        axios.post('/leaveComment', this.state).then((res) => {
             this.setState({
                 profileInfo: res.data.profileInfo
             })
@@ -89,7 +89,7 @@ class UserProfile extends Component {
     }
 
     componentDidMount() {
-        axios.post('http://localhost:8888/userProfile', this.state).then((res) => {
+        axios.post('/userProfile', this.state).then((res) => {
             this.setState({
                 onPage: localStorage.username,
                 userId: res.data.user.id,

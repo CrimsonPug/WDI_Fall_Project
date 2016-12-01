@@ -36,13 +36,13 @@ class AccountPage extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    axios.post('http://localhost:8888/addGame', this.state).then((res) => {
+    axios.post('/addGame', this.state).then((res) => {
       console.log('game saved.');
     })
   }
 
   componentDidMount() {
-    axios.post('http://localhost:8888/account', this.state).then((res) => {
+    axios.post('/account', this.state).then((res) => {
       this.setState({
         userId: res.data.id,
         userBio: res.data.userBio,

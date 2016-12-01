@@ -15,7 +15,7 @@ class Register extends Component {
   formSubmit(e) {
     e.preventDefault();
     axios
-      .post('http://localhost:8888/encrypt', this.state)
+      .post('/encrypt', this.state)
       .then((res) => {
         console.log(res);
       })

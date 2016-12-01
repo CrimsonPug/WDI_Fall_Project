@@ -23,7 +23,7 @@ class UserSearch extends Component {
     componentDidMount() {
         const userList = [];
         const skillList = [];
-        axios.get('http://localhost:8888/game/' + localStorage.gameName).then((res) => {
+        axios.get('/game/' + localStorage.gameName).then((res) => {
             for (let x in res.data) {
                 if (x % 2 === 0) {
                     userList.push(res.data[x]);

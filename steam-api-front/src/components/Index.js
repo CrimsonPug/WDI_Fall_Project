@@ -78,12 +78,12 @@ class Index extends Component {
     }
 
     callClick(e) {
-        window.location = "http://localhost:3000/"+e.target.value;
+        window.location = "/"+e.target.value;
     }
 
     handleClick(e) {
         localStorage.setItem('gameName', e.toUpperCase());
-        setTimeout(() => { window.location = "http://localhost:3000/game/"; }, 250);
+        setTimeout(() => { window.location = "/game/"; }, 250);
     }
 
     render() {

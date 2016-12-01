@@ -16,13 +16,13 @@ class Login extends Component {
     let self = this;
     e.preventDefault();
     axios
-      .post('http://localhost:8888/login', this.state)
+      .post('/login', this.state)
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
           localStorage.authToken = res.data.token;
           localStorage.setItem('username', res.data.username);
-          window.location = "http://localhost:3000/";
+          window.location = "/";
           self.setState({
             warning: 'no-warning',
             loggedIn: true

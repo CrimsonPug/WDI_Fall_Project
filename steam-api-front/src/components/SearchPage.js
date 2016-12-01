@@ -21,7 +21,7 @@ class SearchPage extends Component {
 
   componentDidMount() {
     const gameList = [];
-    axios.get('http://localhost:8888/search/' + this.props.submission).then((res) => {
+    axios.get('/search/' + this.props.submission).then((res) => {
       for (let i=0;i<res.data.length;i++) {
         gameList.push(res.data[i])
       }
