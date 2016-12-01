@@ -263,6 +263,10 @@ app.post('/login', (req, res) => {
     })
 });
 
+app.get('*', function(req, res) {
+    res.sendFile((__dirname+'./../steam-api-front/build/index.html'));
+});
+
 app.listen(PORT, () => {
     console.log('Server running on:' + PORT);
     console.log('Kill server with CTRL + C');
