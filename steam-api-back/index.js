@@ -20,7 +20,7 @@ const bookshelf = require('bookshelf')(knex);
 
 const authorize = require('./middleware/authorize');
 
-app.use(express.static(__dirname + '../steam-api-front/build'))
+app.use(express.static(__dirname + './../steam-api-front/build'))
 
 const APIKEY = 'fc08231b5b235630ae9b475fe7d311f8d0a960a7';
 
