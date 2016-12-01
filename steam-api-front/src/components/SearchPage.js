@@ -22,7 +22,7 @@ class SearchPage extends Component {
   componentDidMount() {
     const gameList = [];
     axios.get('http://localhost:8888/search/' + this.props.submission).then((res) => {
-      for (let i in res.data) {
+      for (let i=0;i<res.data.length;i++) {
         gameList.push(res.data[i])
       }
     }).then((res) => {
@@ -49,7 +49,7 @@ class SearchPage extends Component {
             <div>
               <ul className="collection">
                 <li className="collection-item avatar">
-                  <img src={game.img} className="circle" />
+                  <img role="presentation" src={game.img} className="circle" />
                   <span className="title"><Link onClick={() => { this.handleClick(game.name) } } to="/game/">{game.name}</Link></span>
                   <p className="truncate">{game.desc}</p>
                 </li>

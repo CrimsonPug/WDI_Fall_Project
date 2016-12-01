@@ -71,13 +71,13 @@ app.use(function (req, res, next) {
 
 app.post('/account', authorize, (req, res) => {
     let username = req.body.username;
-    if(username === req.decoded.username){
-    User.where({ username: username }).fetch().then(user => {
-        res.send(user);
-    })
+    if (username === req.decoded.username) {
+        User.where({ username: username }).fetch().then(user => {
+            res.send(user);
+        })
     }
-    else(
-        res.status(404).json({ success: false, message: 'CMON BRO WHAT YOU TRYIN?'}),
+    else (
+        res.status(404).json({ success: false, message: 'CMON BRO WHAT YOU TRYIN?' }),
         console.log('hah you dummie')
     )
 })
@@ -93,6 +93,7 @@ app.post('/userProfile', (req, res) => {
             }
         })
         setTimeout(() => { res.send({ user: user, profileInfo: profileInfo }) }, 250);
+        setTimeout(() => { console.log(profileInfo)}, 250);
     })
 })
 
@@ -153,7 +154,7 @@ app.get('/game/:game', (req, res) => {
 })
 
 app.get('/specificUser/:userName', (req, res) => {
-    User.where({username: req.params.userName}).fetch().then((user) => {
+    User.where({ username: req.params.userName }).fetch().then((user) => {
         console.log(user);
         res.send(user);
     })
@@ -175,6 +176,16 @@ app.post('/addGame', (req, res) => {
 
     })
 });
+
+app.put('/editComment/', (req, res) => {
+    console.log(req.body);
+    let updatedComment = {comment: req.body.modalComment};
+    Comment.where({ id: req.body.currentComment }).save(updatedComment, { patch: true }).then((comment) => {
+        console.log(comment);
+    }).catch(e => {
+        res.status(500).send(e);
+    })
+})
 
 app.delete('/deleteComment/:commentId,:loggedIn', (req, res) => {
     // console.log(req.params.loggedIn);
