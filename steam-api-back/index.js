@@ -4,6 +4,7 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const path = require('path');
 const PORT = process.env.PORT || 8888;
 const knex = require('knex')({
     client: 'postgres',
@@ -264,7 +265,7 @@ app.post('/login', (req, res) => {
 });
 
 app.get('*', function(req, res) {
-    res.sendFile((__dirname+'./../steam-api-front/build/index.html'));
+    res.sendFile(path.resolve((__dirname+'./../steam-api-front/build/index.html')));
 });
 
 app.listen(PORT, () => {
