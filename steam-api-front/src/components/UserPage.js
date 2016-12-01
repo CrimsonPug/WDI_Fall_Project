@@ -37,7 +37,7 @@ class AccountPage extends Component {
   handleSubmit(e) {
     e.preventDefault();
     axios.post('http://localhost:8888/addGame', this.state).then((res) => {
-      console.log(res);
+      console.log('game saved.');
     })
   }
 
@@ -48,7 +48,7 @@ class AccountPage extends Component {
         userBio: res.data.userBio,
         age: res.data.age,
         accountCreated: res.data.created_at,
-        loading: false 
+        loading: false
       })
     })
   }
@@ -62,6 +62,13 @@ class AccountPage extends Component {
 
   render() {
 
+    let style = {
+      backgroundColor: '#FFFFFF',
+      backgroundImage: 'url(\'https://images4.alphacoders.com/681/681185.jpg\')',
+      backgroundPositionY: '-10px',
+      backgroundRepeat: 'no-repeat'
+    }
+
     if (this.state.loading) {
       return <div className="progress">
         <div className="indeterminate"></div>
@@ -69,34 +76,37 @@ class AccountPage extends Component {
     }
     else {
       return (
-        <div className="container">
-          <h2>Welcome {localStorage.username}!</h2>
-
-          <div>
-            <h5 className="section">About</h5>
-            <p>Age: {this.state.age}</p>
-            <p>Member since: {this.state.accountCreated.replace(/T.*?Z/, '')}</p>
-            <p>{this.state.userBio}</p>
+        <div className="JSXWrapper">
+          <div style={style} className="jumbotron">
+            <h2>WELCOME {localStorage.username}!</h2>
           </div>
+          <div className="container">
 
-          <div>
-            <p>Add some games!</p>
-            <form onSubmit={this.handleSubmit}>
-              <input className="gameInput" type="text" onChange={this.textChange} onSubmit={this.handleSubmit} />
+            <div>
+              <h5 className="section">ABOUT</h5>
+              <p>AGE: {this.state.age}</p>
+              <p>MEMBER SINCE: {this.state.accountCreated.replace(/T.*?Z/, '')}</p>
+              <p>{this.state.userBio}</p>
+            </div>
+
+            <div className="row">
+
+              <form onSubmit={this.handleSubmit}>
+                <input className="gameInput col s6 xs12" type="text" placeholder="Add some games! One at a time please." onChange={this.textChange} onSubmit={this.handleSubmit} />
 
 
-              <div className="input-field col s6">
-                <SelectField floatingLabelText={this.state.skillLevel} onChange={this.handleChange}>
-                  <MenuItem value={'Casual'} primaryText="Casual" />
-                  <MenuItem value={'Intermediate'} primaryText="Intermediate" />
-                  <MenuItem value={'Skilled'} primaryText="Skilled" />
-                  <MenuItem value={'Hardcore'} primaryText="Hardcore" />
-                </SelectField>
-              </div>
-            </form>
+                <div className="input-field col s4 x12 offset-s2">
+                  <SelectField floatingLabelText={this.state.skillLevel} onChange={this.handleChange}>
+                    <MenuItem value={'Casual'} primaryText="Casual" />
+                    <MenuItem value={'Intermediate'} primaryText="Intermediate" />
+                    <MenuItem value={'Skilled'} primaryText="Skilled" />
+                    <MenuItem value={'Hardcore'} primaryText="Hardcore" />
+                  </SelectField>
+                </div>
+              </form>
 
+            </div>
           </div>
-
         </div>
       )
     }

@@ -37,7 +37,7 @@ class App extends Component {
     if (localStorage.username != null || localStorage.username != undefined) {
       loginMessage = (
         <div>
-          <p>Logged in as <a href="http://localhost:3000/account">{localStorage.username}</a>  <a onClick={this.logOut}>Logout</a></p>
+          <p>Logged in as <a href="http://localhost:3000/account">{localStorage.username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a className="linkPad" onClick={this.logOut}>LOGOUT</a></p>
         </div>
       )
     }
@@ -50,31 +50,32 @@ class App extends Component {
     }
 
     return (
-      <div>
-
-        <div className="searchBar row valign-wrapper">
-          <div className="input-field col s10 valign">
-            <form className="inlinetest" onSubmit={this.handleSubmit}>
-              <div className="row valign-wrapper">
-                <div className="col s3 valign">
-                  <input type="text" name="submission" placeholder="Search for a game or user" onChange={this.handleChange} />
+      <div className="App">
+          <div className="searchBar row valign-wrapper">
+            <div className="input-field col s10 valign">
+              <form className="inlinetest" onSubmit={this.handleSubmit}>
+                <div className="row valign-wrapper">
+                  <div className="col s1">
+                    <Link className="linkPad" to="/">LFG</Link>
+                  </div>
+                  <div className="col s3 searchForm">
+                    <input type="text" name="submission" placeholder="Search for a game or user" onChange={this.handleChange} />
+                  </div>
+                  <div className="col s8 valign">
+                    <p>
+                      <Link className="linkPad" to="/search/">GAMES</Link>
+                      <Link className="linkPad" to="/specificUser/">USERS</Link>
+                      <Link className="linkPad" to="/login">LOGIN</Link>
+                      <Link className="linkPad" to="/register">REGISTER</Link>
+                    </p>
+                  </div>
                 </div>
-                <div className="col s9 valign">
-                  <p>
-                    <Link className="linkPad" to="/search/">Game Search</Link>
-                    <Link className="linkPad" to="/specificUser/">User Search</Link>
-                    <Link className="linkPad" to="/login">Login</Link>
-                    <Link className="linkPad" to="/register">Register</Link>
-                    <Link className="linkPad" to="/">Home</Link>
-                  </p>
-                </div>
-              </div>
-            </form>
+              </form>
+            </div>
+            <div className="col s2">
+              {loginMessage}
+            </div>
           </div>
-          <div className="col s2">
-            {loginMessage}
-          </div>
-        </div>
         <div className="childSpacer">
           {React.cloneElement(this.props.children, { submission: this.state.submission }, { handleClick: this.handleClick })}
         </div>

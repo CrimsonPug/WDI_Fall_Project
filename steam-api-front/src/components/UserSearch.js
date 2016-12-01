@@ -57,7 +57,7 @@ class UserSearch extends Component {
         else {
             return (
                 <div className="container">
-                    <h2>Search Results</h2>
+                    <h2>Search Results for {this.state.gameName}</h2>
 
                     {userArr.map((user, i) =>
                         <div>

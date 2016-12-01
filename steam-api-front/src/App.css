@@ -1,5 +1,8 @@
 .App {
   font-family: 'Raleway', sans-serif;
+}
+
+.App-Wrapper {
   text-align: center;
 }
 
@@ -7,9 +10,59 @@
   position: fixed;
   z-index: 100;
   width: 100%;
-  height: 50px;
-  background-color: #eee;
+  height: 65px;
+  background-color: #FFFFFF;
   opacity: .8;
+}
+
+a {
+  color: black;
+}
+
+.footy {
+  background-color: #333;
+}
+
+.boldCard {
+  font-weight: bold;
+  letter-spacing: 1px; 
+}
+
+.jumbotron {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("http://wilwells.com/wp-content/uploads/2014/06/DIVISION_KEYART_FINAL-LAYERED_02.jpg");
+  background-size: cover;
+  background-position: center;
+  background-position-y: -650px;
+  height: 500px;
+}
+
+.titleText {
+  font-weight: bolder;
+  letter-spacing: 8px;
+  position: relative;
+  top: 50px;
+}
+
+.callToButtons {
+  position: relative;
+  top: 50px;
+}
+
+.callToAction {
+  font-weight: bold;
+  letter-spacing: 6px;
+}
+
+.bigIcon {
+  font-size: 60px;
+}
+
+.danger {
+  background-color: #D40D12;
+}
+
+.danger:hover {
+  background-color: #94090D;
 }
 
 .inlinetest {
@@ -17,11 +70,16 @@
 }
 
 .linkPad {
-  padding: 0px 5px;
+  padding: 0px 10px;
+  letter-spacing: 1px;
 }
 
 .childSpacer {
-  padding-top: 50px;
+  padding-top: 65px;
+}
+
+.searchForm {
+  margin-top: 20px;
 }
 
 .searchBar form {
@@ -34,20 +92,9 @@
   right: 5em;
 }
 
-.App-header {
-  background-color: #eee;
-  height: 150px;
-  padding: 20px;
-  color: black;
-}
-
 .posterImage {
   height: 400px;
   width: 200px;
-}
-
-.gameInput {
-  width: 25em;
 }
 
 .alert {
