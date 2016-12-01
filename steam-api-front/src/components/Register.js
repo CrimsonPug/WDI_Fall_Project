@@ -18,8 +18,8 @@ class Register extends Component {
       .post('/encrypt', this.state)
       .then((res) => {
         console.log(res);
-        window.location = '/login';
       })
+    window.location = '/login';
   }
 
   txtFieldChange(e) {
