@@ -29,8 +29,8 @@ class Index extends Component {
             },
             {
                 name: 'HEARTHSTONE: HEROES OF WARCRAFT',
-                img: 'http://geekboy.ca/wp-content/uploads/2013/12/Hearthstone-1600x1200.jpg',
-                // img: 'http://images.onehitpixel.com/2013/11/hearthstonebox.jpg',
+                // img: 'http://geekboy.ca/wp-content/uploads/2013/12/Hearthstone-1600x1200.jpg',
+                img: 'http://images.onehitpixel.com/2013/11/hearthstonebox.jpg',
                 desc: 'A Free-to-Play card collection/strategy game by Blizzard Entertainment set in the Warcraft universe.',
                 release: 'March 11, 2014',
                 platform: 'PC'
@@ -65,11 +65,11 @@ class Index extends Component {
                 platform: 'PC'
             },
             {
-                name: 'FIFA 2017',
-                img: 'https://pbs.twimg.com/media/CZG0YqPWYAAqgEs.png',
-                desc: 'a sports game',
-                release: 'September 27, 2016',
-                platform: 'Xbox One'
+                name: 'HEROES OF THE STORM',
+                img: 'http://www.goodluckhavefun.net/wp-content/uploads/blizzcon-2013-heroes-of-the-storm-poster-3.jpg',
+                desc: 'Heroes from Warcraft, StarCraft, Diablo, and other universes are summoned to the Nexus for five-on-five combat in Blizzard\'s take on the MOBA genre.',
+                release: 'June 2, 2015',
+                platform: 'PC'
             }
             ]
         }
@@ -78,7 +78,7 @@ class Index extends Component {
     }
 
     callClick(e) {
-        window.location = "/"+e.target.value;
+        window.location = "/" + e.target.value;
     }
 
     handleClick(e) {
@@ -99,14 +99,14 @@ class Index extends Component {
                     <div className="jumbotron">
                         <div className="row">
                             <h1 style={style} className="titleText col s12">LOOKING FOR GROUP</h1>
-                            
+
                             <div className="col s2 xs12 offset-s4 callToButtons">
                                 <button value="register" className="btn btn-primary" onClick={this.callClick}>REGISTER</button>
                             </div>
                             <div className="col s2 xs12 callToButtons">
                                 <button value="login" className="btn btn-primary" onClick={this.callClick}>LOGIN</button>
                             </div>
-                            
+
                         </div>
                     </div>
 
