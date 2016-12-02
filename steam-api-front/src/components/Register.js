@@ -12,8 +12,7 @@ class Register extends Component {
     this.txtFieldChange = this.txtFieldChange.bind(this);
   }
 
-  formSubmit(e) {
-    e.preventDefault();
+  formSubmit() {
     axios
       .post('/encrypt', this.state)
       .then((res) => {

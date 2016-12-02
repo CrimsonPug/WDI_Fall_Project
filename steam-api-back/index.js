@@ -201,6 +201,8 @@ app.delete('/deleteComment/:commentId,:loggedIn', (req, res) => {
         else {
             console.log('User doesn\'t have access to deleting this comment!');
         }
+    }).catch(e => {
+        res.status(500).send(e);
     });
 })
 
@@ -217,6 +219,8 @@ app.post('/leaveComment', (req, res) => {
             }
         })
         setTimeout(() => { res.send({ user: user, profileInfo: profileInfo }) }, 250);
+    }).catch(e => {
+        res.status(500).send(e);
     })
 })
 
@@ -238,6 +242,8 @@ app.post('/encrypt', (req, res) => {
             });
 
         });
+    }).catch(e => {
+        res.status(500).send(e);
     });
 });
 
