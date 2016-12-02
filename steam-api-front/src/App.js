@@ -34,7 +34,7 @@ class App extends Component {
   render() {
 
     let loginMessage;
-    if (localStorage.username !== null || localStorage.username !== undefined) {
+    if (localStorage.username != null || localStorage.username != undefined) {
       loginMessage = (
         <div>
           <p>Logged in as <a href="/account">{localStorage.username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a className="linkPad" onClick={this.logOut}>LOGOUT</a></p>
