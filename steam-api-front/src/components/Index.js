@@ -29,7 +29,6 @@ class Index extends Component {
             },
             {
                 name: 'HEARTHSTONE: HEROES OF WARCRAFT',
-                // img: 'http://geekboy.ca/wp-content/uploads/2013/12/Hearthstone-1600x1200.jpg',
                 img: 'http://images.onehitpixel.com/2013/11/hearthstonebox.jpg',
                 desc: 'A Free-to-Play card collection/strategy game by Blizzard Entertainment set in the Warcraft universe.',
                 release: 'March 11, 2014',
@@ -37,7 +36,6 @@ class Index extends Component {
             },
             {
                 name: 'BATTLEFIELD 1',
-                // img: 'http://www.evilcontrollers.com/evilblog/wp-content/uploads/2016/11/battlefield-1-giants-shadow.jpg',
                 img: 'http://www.gbposters.com/media/catalog/product/cache/1/image/737x938/17f82f742ffe127f42dca9de82fb58b1/b/a/battlefield-1-main-maxi-poster-1.16.jpg',
                 desc: 'Battlefield goes to the first World War for the first time.',
                 release: 'Oct Something, 2016',

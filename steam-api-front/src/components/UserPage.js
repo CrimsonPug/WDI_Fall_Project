@@ -64,9 +64,10 @@ class AccountPage extends Component {
 
     let style = {
       backgroundColor: '#FFFFFF',
-      backgroundImage: 'url(\'https://images4.alphacoders.com/681/681185.jpg\')',
+      background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(\'https://images4.alphacoders.com/681/681185.jpg\')',
       backgroundPositionY: '-10px',
-      backgroundRepeat: 'no-repeat'
+      backgroundRepeat: 'no-repeat',
+      color: '#FFFFFF'
     }
 
     if (this.state.loading) {
