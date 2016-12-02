@@ -12,7 +12,8 @@ class Login extends Component {
     this.txtFieldChange = this.txtFieldChange.bind(this);
   }
 
-  formSubmit() {
+  formSubmit(e) {
+    e.preventDefault();
     let self = this;
     axios
       .post('/login', this.state)
