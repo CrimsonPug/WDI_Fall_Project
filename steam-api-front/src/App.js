@@ -65,8 +65,8 @@ class App extends Component {
                 </div>
                 <div className="col s8 valign">
                   <p>
-                    <Link className="linkPad" to="/search/">GAMES</Link>
-                    <Link className="linkPad" to="/specificUser/">USERS</Link>
+                    <Link className="linkPad" onClick={this.handleSubmit} to="/search/">GAMES</Link>
+                    <Link className="linkPad" onClick={this.handleSubmit} to="/specificUser/">USERS</Link>
                     <Link className="linkPad" to="/login">LOGIN</Link>
                     <Link className="linkPad" to="/register">REGISTER</Link>
                   </p>
