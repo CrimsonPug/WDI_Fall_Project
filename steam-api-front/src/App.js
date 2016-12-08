@@ -30,7 +30,6 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.refs.searchBar.value = '';
   }
 
   render() {
@@ -61,12 +60,12 @@ class App extends Component {
                   <Link className="linkPad" to="/">LFG</Link>
                 </div>
                 <div className="col s3 searchForm">
-                  <input type="text" name="submission" ref="searchBar" placeholder="Search for a game or user" onChange={this.handleChange} />
+                  <input type="text" name="submission" placeholder="Search for a game or user" onChange={this.handleChange} />
                 </div>
                 <div className="col s8 valign">
                   <p>
-                    <Link className="linkPad" onClick={this.handleSubmit} to="/search/">GAMES</Link>
-                    <Link className="linkPad" onClick={this.handleSubmit} to="/specificUser/">USERS</Link>
+                    <Link className="linkPad" to="/search/">GAMES</Link>
+                    <Link className="linkPad" to="/specificUser/">USERS</Link>
                     <Link className="linkPad" to="/login">LOGIN</Link>
                     <Link className="linkPad" to="/register">REGISTER</Link>
                   </p>
