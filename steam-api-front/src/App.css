@@ -29,7 +29,7 @@ a {
 }
 
 .jumbotron {
-  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("http://wilwells.com/wp-content/uploads/2014/06/DIVISION_KEYART_FINAL-LAYERED_02.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("http://wilwells.com/wp-content/uploads/2014/06/DIVISION_KEYART_FINAL-LAYERED_02.jpg");
   background-size: cover;
   background-position: center;
   background-position-y: -650px;
