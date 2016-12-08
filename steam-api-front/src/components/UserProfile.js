@@ -12,7 +12,6 @@ class UserProfile extends Component {
             userBio: '',
             age: '',
             username: '',
-            skillLevel: 'Casual',
             targetComment: '',
             showModal: false,
             modalComment: '',

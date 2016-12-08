@@ -4,6 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import axios from 'axios';
 
 //Page that holds the account specific stuff, like adding games to a user's account.  Can't be accessed unless the user is validated.
+// 2016/12/07 ADDED BUTTON TO ADD GAME, PLUS SMALL DESCRIPTIVE SECTION. ALSO ADDED REF TO THE FORM, AND A FORM CLEAR.
 
 class AccountPage extends Component {
   constructor() {
@@ -39,6 +40,7 @@ class AccountPage extends Component {
     axios.post('/addGame', this.state).then((res) => {
       console.log('game saved.');
     })
+    this.refs.gameAddition.value = '';
   }
 
   componentDidMount() {
@@ -91,9 +93,12 @@ class AccountPage extends Component {
             </div>
 
             <div className="row">
+              
 
+              <h5>ADD GAMES</h5>
+              <p>Try adding a game here, start by typing the name of the game you want to add, then select your skill level in that game.</p>
               <form onSubmit={this.handleSubmit}>
-                <input className="gameInput col s6 xs12" type="text" placeholder="Add some games! One at a time please." onChange={this.textChange} onSubmit={this.handleSubmit} />
+                <input className="gameInput col s6 xs12" type="text" ref="gameAddition" placeholder="Add some games! One at a time please." onChange={this.textChange} onSubmit={this.handleSubmit} />
 
 
                 <div className="input-field col s4 x12 offset-s2">
@@ -104,6 +109,8 @@ class AccountPage extends Component {
                     <MenuItem value={'Hardcore'} primaryText="Hardcore" />
                   </SelectField>
                 </div>
+
+                <button className="callToButtons" onClick={this.handleSubmit}>Add Game</button>
               </form>
 
             </div>

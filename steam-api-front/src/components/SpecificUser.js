@@ -48,7 +48,7 @@ class SpecificUser extends Component {
         else {
             return (
                 <div className="container">
-                    <h2>Search Results</h2>
+                    <h2>SEARCH RESULTS</h2>
 
                     {userArr.map((user, i) =>
                         <div>

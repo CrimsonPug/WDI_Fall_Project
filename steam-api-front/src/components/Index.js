@@ -155,7 +155,7 @@ class Index extends Component {
                     </div>
                 </div>
                 <footer className="section footy">
-                    <h5 className="center-align">ALL ABOARD THE CRANE TRAIN CHOO CHOO MOTHERFUCKER</h5>
+                    <h5 className="center-align">Generic Easter Egg</h5>
                 </footer>
             </div>
         );

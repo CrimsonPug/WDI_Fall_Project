@@ -191,8 +191,6 @@ app.put('/editComment/', (req, res) => {
 })
 
 app.delete('/deleteComment/:commentId,:loggedIn', (req, res) => {
-    // console.log(req.params.loggedIn);
-    // console.log(req.body);
     Comment.where({ id: req.params.commentId }).fetch().then((comment) => {
         if (req.params.loggedIn === comment.attributes.sender_id) {
             comment.destroy();
@@ -231,10 +229,8 @@ app.post('/encrypt', (req, res) => {
     let password = req.body.password;
     let bio = req.body.userbio;
     let age = req.body.age;
-    //encrypt password
     bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(password, salt, (err, hash) => {
-            // Store hash in your password DB. 
+        bcrypt.hash(password, salt, (err, hash) => { 
             if (err) console.log(err);
             console.log('new user saved');
             new User().save({ username: username, password: hash, userBio: bio, age: age }).catch(function () {
@@ -250,15 +246,10 @@ app.post('/encrypt', (req, res) => {
 app.post('/login', (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
-    //we search our passwords folder for the file with the appropriate user info.
     User.where({ username: username }).fetch().then((data) => {
-        //compare the plaintext password given by the user with the hashed password from the file.
-        //bcrypt.compare() will hash the password for us and compare the hashes
         bcrypt.compare(password, data.attributes.password.toString(), function (err, result) {
             if (result) {
-                //If the passwords match, create a token using a secret key and place the username inside the token
                 let token = jwt.sign({ username: username }, 'brainstationkey');
-                //Then send the token back to the client
                 res.json({ token: token, username: username });
             }
             else {
