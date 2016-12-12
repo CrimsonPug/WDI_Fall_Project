@@ -99,6 +99,10 @@ a {
   letter-spacing: 1px;
 }
 
+.addGameButton {
+  display: block;
+}
+
 .childSpacer {
   overflow: auto;
   padding-top: 70px;

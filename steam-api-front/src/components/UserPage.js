@@ -109,8 +109,8 @@ class AccountPage extends Component {
                       <MenuItem value={'Hardcore'} primaryText="Hardcore" />
                     </SelectField>
                   </div>
-                  <div className="col s3 offset-s3">
-                    <button className="callToButtons btn" onClick={this.handleSubmit}>Add Game</button>
+                  <div className="col s3 offset-s3 addGameButton">
+                    <button className="btn" onClick={this.handleSubmit}>Add Game</button>
                   </div>
                 </form>
               </div>
