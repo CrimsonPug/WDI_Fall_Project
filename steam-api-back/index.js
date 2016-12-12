@@ -204,6 +204,11 @@ app.delete('/deleteComment/:commentId,:loggedIn', (req, res) => {
     });
 })
 
+app.delete('/deleteUser/:username', (req, res) => {
+    User.where({username: req.params.username}).destroy();
+    console.log('User deleted.');
+})
+
 app.post('/leaveComment', (req, res) => {
     let recipient = req.body.userId;
     let sender = req.body.onPage;
