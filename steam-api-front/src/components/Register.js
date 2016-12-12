@@ -59,7 +59,7 @@ class Register extends Component {
       <div className="JSXWrapper">
 
         <div style={style} className="jumbotron">
-          <h2 className="col s12 center-align">Registration Form</h2>
+          <h2 className="col s12 center-align">REGISTRATION</h2>
         </div>
 
         <div className="container">

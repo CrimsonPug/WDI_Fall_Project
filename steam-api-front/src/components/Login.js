@@ -68,7 +68,7 @@ class Login extends Component {
         <div className="JSXWrapper">
 
           <div style={style} className="jumbotron">
-            <h2 className="col s12 center-align">Login Form</h2>
+            <h2 className="col s12 center-align">LOGIN</h2>
           </div>
 
           <div id="auth" className="container">
