@@ -112,9 +112,10 @@ a {
 
 .footy {
   clear: both;
+  width: 100%;
   background-color: #333;
   display: block;
-  position: absolute;
+  position: relative;
   bottom: 0;
   height: 70px;
   margin-top: -70px; 
