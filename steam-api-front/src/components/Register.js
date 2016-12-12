@@ -48,10 +48,10 @@ class Register extends Component {
   render() {
 
     let style = {
+      background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://ubistatic-a.akamaihd.net/0021/community-intelligence/prod/article/56784c5484c3d.jpg")',
       backgroundColor: '#FFFFFF',
       backgroundSize: 'cover',
-      color: '#FFFFFF',
-      background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://ubistatic-a.akamaihd.net/0021/community-intelligence/prod/article/56784c5484c3d.jpg")'
+      color: '#FFFFFF'
     }
 
     return (
