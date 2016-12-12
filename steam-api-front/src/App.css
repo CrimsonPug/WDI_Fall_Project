@@ -21,6 +21,7 @@
 
 .socialButtons {
   margin: 10px;
+  padding: 10px;
   background-color: transparent;
   border: none;
   color: #FFFFFF;
@@ -33,16 +34,11 @@
 }
 
 .loader {
-  padding: 40% 0;
+  margin: 40% 0;
 }
 
 a {
   color: black;
-}
-
-.footy {
-  background-color: #333;
-  display: block;
 }
 
 .boldCard {
@@ -98,6 +94,15 @@ a {
 
 .childSpacer {
   padding-top: 65px;
+  min-height: 100%;
+  padding-bottom: 70px;
+}
+
+.footy {
+  background-color: #333;
+  display: block;
+  height: 70px;
+  margin-top: -70px; 
 }
 
 .searchForm {

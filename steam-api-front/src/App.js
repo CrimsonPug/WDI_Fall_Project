@@ -81,8 +81,8 @@ class App extends Component {
           {React.cloneElement(this.props.children, { submission: this.state.submission }, { handleClick: this.handleClick })}
         </div>
         <footer className="section footy">
-          <button><a className="fa fa-github fa-3x socialButtons" href="https://github.com/frshock" /></button>
-          <button><a className="fa fa-linkedin fa-3x socialButtons" href="https://ca.linkedin.com/in/will-crane" /></button>
+          <a className="fa fa-github fa-3x socialButtons" href="https://github.com/frshock" />
+          <a className="fa fa-linkedin fa-3x socialButtons" href="https://ca.linkedin.com/in/will-crane" />
         </footer>
       </div>
     )
