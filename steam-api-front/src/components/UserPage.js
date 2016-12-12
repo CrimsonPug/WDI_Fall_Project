@@ -73,8 +73,8 @@ class AccountPage extends Component {
     }
 
     if (this.state.loading) {
-      return <div className="progress container valign-wrapper">
-        <div className="indeterminate valign"></div>
+      return <div className="progress loader container">
+        <div className="indeterminate"></div>
       </div>
     }
     else {

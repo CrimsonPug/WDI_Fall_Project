@@ -91,7 +91,7 @@ class App extends Component {
         <footer className="footy valign-wrapper">
           <a className="fa fa-github fa-3x socialButtons" href="https://github.com/frshock" />
           <a className="fa fa-linkedin fa-3x socialButtons" href="https://ca.linkedin.com/in/will-crane" />
-          <span className="right-align valign">Like this? Let me know @ will.s.crane@gmail.com!</span>
+          <span className="right-align valign footerEmail">Like this? Let me know @ will.s.crane@gmail.com!</span>
         </footer>
       </div>
     )

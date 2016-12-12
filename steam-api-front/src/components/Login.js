@@ -58,7 +58,7 @@ class Login extends Component {
     let style = {
       background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://ubistatic-a.akamaihd.net/0021/community-intelligence/prod/article/56784c5484c3d.jpg")',
       backgroundColor: '#FFFFFF',
-      backgroundPositionY: '-100px',
+      backgroundPositionY: '-120px',
       backgroundSize: 'cover',
       color: '#FFFFFF'
     }

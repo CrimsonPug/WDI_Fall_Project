@@ -50,8 +50,8 @@ class UserSearch extends Component {
     render() {
         const userArr = this.state.userList;
         if (this.state.loading) {
-            return <div className="progress valign-wrapper container loader">
-                <div className="indeterminate valign"></div>
+            return <div className="progress container loader">
+                <div className="indeterminate"></div>
             </div>
         }
         else {
