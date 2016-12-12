@@ -43,7 +43,7 @@ class SearchPage extends Component {
     else {
       return (
         <div className="container">
-          <h2 className="section">Search Results</h2>
+          <h2 className="section"><i class="fa fa-search" aria-hidden="true"></i> SEARCH RESULTS</h2>
 
           {gameArr.map((game) =>
             <div>
