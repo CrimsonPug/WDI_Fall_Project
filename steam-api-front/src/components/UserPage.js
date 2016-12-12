@@ -86,31 +86,33 @@ class AccountPage extends Component {
           <div className="container">
 
             <div>
-              <h5 className="section">ABOUT</h5>
+              <h4 className="section">ABOUT</h4>
               <p>AGE: {this.state.age}</p>
               <p>MEMBER SINCE: {this.state.accountCreated.replace(/T.*?Z/, '')}</p>
               <p>{this.state.userBio}</p>
             </div>
 
             <div className="row">
-              
 
-              <h5>ADD GAMES</h5>
+
+              <h4 className="section">ADD GAMES</h4>
               <p>Try adding a game here, start by typing the name of the game you want to add, then select your skill level in that game.</p>
-              <form onSubmit={this.handleSubmit}>
-                <input className="gameInput col s6 xs12" type="text" ref="gameAddition" placeholder="Add some games! One at a time please." onChange={this.textChange} onSubmit={this.handleSubmit} />
-                
-                <div className="input-field col s4 x12 offset-s2">
-                  <SelectField floatingLabelText={this.state.skillLevel} onChange={this.handleChange}>
-                    <MenuItem value={'Casual'} primaryText="Casual" />
-                    <MenuItem value={'Intermediate'} primaryText="Intermediate" />
-                    <MenuItem value={'Skilled'} primaryText="Skilled" />
-                    <MenuItem value={'Hardcore'} primaryText="Hardcore" />
-                  </SelectField>
-                </div>
+              <div>
+                <form onSubmit={this.handleSubmit}>
+                  <input className="gameInput col s6 xs12" type="text" ref="gameAddition" placeholder="Add some games! One at a time please." onChange={this.textChange} onSubmit={this.handleSubmit} />
 
-                <button className="callToButtons btn col s6 offset-s6" onClick={this.handleSubmit}>Add Game</button>
-              </form>
+                  <div className="input-field col s4 x12 offset-s2">
+                    <SelectField floatingLabelText={this.state.skillLevel} onChange={this.handleChange}>
+                      <MenuItem value={'Casual'} primaryText="Casual" />
+                      <MenuItem value={'Intermediate'} primaryText="Intermediate" />
+                      <MenuItem value={'Skilled'} primaryText="Skilled" />
+                      <MenuItem value={'Hardcore'} primaryText="Hardcore" />
+                    </SelectField>
+                  </div>
+
+                  <button className="callToButtons btn col s3 offset-s3" onClick={this.handleSubmit}>Add Game</button>
+                </form>
+              </div>
 
             </div>
           </div>
