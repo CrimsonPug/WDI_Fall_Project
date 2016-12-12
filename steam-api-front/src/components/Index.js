@@ -132,7 +132,7 @@ class Index extends Component {
                                 <div className="col s4">
                                     <i className="material-icons bigIcon">games</i>
                                     <h3>Add games</h3>
-                                    <p>Add the games that you play, and be sure to tell everyone how good you are!</p>
+                                    <p>Add the games that you play by clicking on your name in the nav bar, and be sure to tell everyone how good you are!</p>
                                 </div>
                                 <div className="col s4">
                                     <i className="material-icons bigIcon">search</i>

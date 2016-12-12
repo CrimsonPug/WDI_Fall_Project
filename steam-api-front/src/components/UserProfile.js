@@ -136,14 +136,14 @@ class UserProfile extends Component {
                     <div className="container">
 
                         <div className="section">
-                            <h5>ABOUT</h5>
+                            <h4>ABOUT</h4>
                             <p>AGE: {this.state.age}</p>
                             <p>MEMBER SINCE: {this.state.accountCreated.replace(/T.*?Z/, '')}</p>
                             <p>{this.state.userBio}</p>
                         </div>
 
                         <div className="section">
-                            <h5>Leave a comment!</h5>
+                            <h4>Leave a comment!</h4>
                             <form className="row" onSubmit={this.handleSubmit}>
                                 <input className="gameInput col s8" ref="commentBox" placeholder="Wanna join up? Leave them your details! (Eg. Steam ID, battle.net tag)" type="text" onChange={this.textChange} onSubmit={this.handleSubmit} />
                                 <button className="btn col s2" onClick={this.handleSubmit}>SEND</button>

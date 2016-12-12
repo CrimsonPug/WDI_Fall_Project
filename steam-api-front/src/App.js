@@ -38,7 +38,7 @@ class App extends Component {
     if (localStorage.username != null || localStorage.username != undefined) {
       loginMessage = (
         <div>
-          <p>Logged in as <a href="/account">{localStorage.username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a className="linkPad" onClick={this.logOut}>LOGOUT</a></p>
+          <p>Logged in as <a href="/account"><i className="material-icons">perm_identity</i>{localStorage.username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a className="linkPad" onClick={this.logOut}>LOGOUT</a></p>
         </div>
       )
     }
