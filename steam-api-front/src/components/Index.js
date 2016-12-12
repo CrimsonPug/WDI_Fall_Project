@@ -99,10 +99,10 @@ class Index extends Component {
                             <h1 style={style} className="titleText col s12">LOOKING FOR GROUP</h1>
 
                             <div className="col s2 xs12 offset-s4 callToButtons">
-                                <button value="register" className="btn btn-primary" onClick={this.callClick}>REGISTER</button>
+                                <button value="register" className="btn" onClick={this.callClick}>REGISTER</button>
                             </div>
                             <div className="col s2 xs12 callToButtons">
-                                <button value="login" className="btn btn-primary" onClick={this.callClick}>LOGIN</button>
+                                <button value="login" className="btn" onClick={this.callClick}>LOGIN</button>
                             </div>
 
                         </div>

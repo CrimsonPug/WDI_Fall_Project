@@ -73,15 +73,15 @@ class AccountPage extends Component {
     }
 
     if (this.state.loading) {
-      return <div className="progress">
-        <div className="indeterminate"></div>
+      return <div className="progress container valign-wrapper">
+        <div className="indeterminate valign"></div>
       </div>
     }
     else {
       return (
         <div className="JSXWrapper">
           <div style={style} className="jumbotron">
-            <h2>WELCOME {localStorage.username}!</h2>
+            <h2 className="userJumbo">WELCOME {localStorage.username}!</h2>
           </div>
           <div className="container">
 
@@ -99,8 +99,7 @@ class AccountPage extends Component {
               <p>Try adding a game here, start by typing the name of the game you want to add, then select your skill level in that game.</p>
               <form onSubmit={this.handleSubmit}>
                 <input className="gameInput col s6 xs12" type="text" ref="gameAddition" placeholder="Add some games! One at a time please." onChange={this.textChange} onSubmit={this.handleSubmit} />
-
-
+                
                 <div className="input-field col s4 x12 offset-s2">
                   <SelectField floatingLabelText={this.state.skillLevel} onChange={this.handleChange}>
                     <MenuItem value={'Casual'} primaryText="Casual" />
@@ -110,7 +109,7 @@ class AccountPage extends Component {
                   </SelectField>
                 </div>
 
-                <button className="callToButtons" onClick={this.handleSubmit}>Add Game</button>
+                <button className="callToButtons btn col s6 offset-s6" onClick={this.handleSubmit}>Add Game</button>
               </form>
 
             </div>

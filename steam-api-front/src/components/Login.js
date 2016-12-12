@@ -91,7 +91,7 @@ class Login extends Component {
     else if (this.state.loggedIn === true) {
       return (
         <div>
-          <h1> HAVE FUN </h1>
+          <h1 className="center-align"> HAVE FUN </h1>
         </div>
       )
     }

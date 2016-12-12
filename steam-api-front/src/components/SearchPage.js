@@ -36,8 +36,8 @@ class SearchPage extends Component {
   render() {
     const gameArr = this.state.gameList;
     if (this.state.loading) {
-      return <div className="progress container">
-        <div className="indeterminate"></div>
+      return <div className="progress container valign-wrapper">
+        <div className="indeterminate valign"></div>
       </div>
     }
     else {

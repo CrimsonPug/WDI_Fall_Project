@@ -121,8 +121,8 @@ class UserProfile extends Component {
         
 
         if (this.state.loading) {
-            return <div className="progress">
-                <div className="indeterminate"></div>
+            return <div className="progress container valign-wrapper">
+                <div className="indeterminate valign"></div>
             </div>
         }
         else {
@@ -130,7 +130,7 @@ class UserProfile extends Component {
 
                 <div className="JSXWrapper">
                     <div style={style} className="jumbotron">
-                        <h2>WELCOME TO {localStorage.userSearch}'s PAGE!</h2>
+                        <h2 className="userJumbo">WELCOME TO {localStorage.userSearch}'s PAGE!</h2>
                     </div>
                     <div className="container">
 
