@@ -88,13 +88,21 @@ class Index extends Component {
         let style = {
             color: '#FFFFFF'
         }
+
+        let jumboStyle = {
+            background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("http://wilwells.com/wp-content/uploads/2014/06/DIVISION_KEYART_FINAL-LAYERED_02.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundPositionY: '-650px'
+        }
+
         let gameArr = this.state.gameList;
         return (
             <div className="App">
 
                 <div className="App-Wrapper">
 
-                    <div className="jumbotron">
+                    <div style={jumboStyle} className="jumbotron">
                         <div className="row">
                             <h1 style={style} className="titleText col s12">LOOKING FOR GROUP</h1>
 

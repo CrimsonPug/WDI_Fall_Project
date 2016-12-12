@@ -57,7 +57,7 @@ class Login extends Component {
   render() {
     let style = {
       backgroundColor: '#FFFFFF',
-      backgroundSize: '100% 100%',
+      backgroundSize: 'cover',
       color: '#FFFFFF',
       background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://ubistatic-a.akamaihd.net/0021/community-intelligence/prod/article/56784c5484c3d.jpg")'
   }
