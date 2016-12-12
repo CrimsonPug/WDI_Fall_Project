@@ -55,8 +55,22 @@ class Login extends Component {
   }
 
   render() {
-    if (this.state.loggedIn === false) {
-      return (
+    let style = {
+      backgroundColor: '#FFFFFF',
+      backgroundPositionY: '-10px',
+      backgroundRepeat: 'no-repeat',
+      color: '#FFFFFF',
+      background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://ubistatic-a.akamaihd.net/0021/community-intelligence/prod/article/56784c5484c3d.jpg")'
+  }
+  if(this.state.loggedIn === false) {
+    return (
+
+      <div className="JSXWrapper">
+
+        <div style={style} className="jumbotron">
+          <h2 className="col s12">Login Form</h2>
+        </div>
+
         <div id="auth" className="container">
           <div className="row">
             <h3 className="col s12">Login Form</h3>
@@ -85,17 +99,18 @@ class Login extends Component {
             </form>
           </div>
         </div>
-      )
-    }
-
-    else if (this.state.loggedIn === true) {
-      return (
-        <div>
-          <h1 className="center-align"> HAVE FUN </h1>
-        </div>
-      )
-    }
+      </div>
+    )
   }
+
+    else if(this.state.loggedIn === true) {
+    return (
+      <div>
+        <h1 className="center-align"> HAVE FUN </h1>
+      </div>
+    )
+  }
+}
 }
 
 export default Login;

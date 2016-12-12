@@ -19,6 +19,10 @@
   margin-left: 50px;
 }
 
+.loader {
+  height: 100%;
+}
+
 a {
   color: black;
 }
