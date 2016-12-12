@@ -20,8 +20,8 @@
 }
 
 .socialButtons {
-  margin: 10px;
-  padding: 10px;
+  margin: 5px;
+  padding: 5px;
   background-color: transparent;
   border: none;
   color: #FFFFFF;
@@ -93,14 +93,17 @@ a {
 }
 
 .childSpacer {
+  overflow: auto;
   padding-top: 65px;
   min-height: 100%;
   padding-bottom: 70px;
 }
 
 .footy {
+  clear: both;
   background-color: #333;
   display: block;
+  position: relative;
   height: 70px;
   margin-top: -70px; 
 }
