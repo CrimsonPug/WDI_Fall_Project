@@ -41,14 +41,14 @@ class SpecificUser extends Component {
     render() {
         const userArr = this.state.userResult;
         if (this.state.loading) {
-            return <div className="progress container">
+            return <div className="progress container loader">
                 <div className="indeterminate"></div>
             </div>
         }
         else {
             return (
                 <div className="container">
-                    <h2>SEARCH RESULTS</h2>
+                    <h2><i className="fa fa-search" aria-hidden="true" /> SEARCH RESULTS </h2>
 
                     {userArr.map((user, i) =>
                         <div>

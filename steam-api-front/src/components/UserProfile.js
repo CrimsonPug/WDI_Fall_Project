@@ -84,7 +84,9 @@ class UserProfile extends Component {
             this.setState({
                 profileInfo: res.data.profileInfo
             })
+            this.refs.commentBox.value = '';
         })
+
     }
 
     componentDidMount() {
@@ -121,8 +123,8 @@ class UserProfile extends Component {
         
 
         if (this.state.loading) {
-            return <div className="progress container valign-wrapper">
-                <div className="indeterminate valign"></div>
+            return <div className="progress container loader">
+                <div className="indeterminate"></div>
             </div>
         }
         else {
@@ -144,7 +146,7 @@ class UserProfile extends Component {
                         <div>
                             <p>Leave a comment!</p>
                             <form onSubmit={this.handleSubmit}>
-                                <input className="gameInput" placeholder="Wanna join up? Leave them your details! (Eg. Steam ID, battle.net tag)" type="text" onChange={this.textChange} onSubmit={this.handleSubmit} />
+                                <input className="gameInput" ref="commentBox" placeholder="Wanna join up? Leave them your details! (Eg. Steam ID, battle.net tag)" type="text" onChange={this.textChange} onSubmit={this.handleSubmit} />
                             </form>
                         </div>
 
