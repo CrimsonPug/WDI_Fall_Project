@@ -19,8 +19,21 @@
   margin-left: 50px;
 }
 
+.socialButtons {
+  margin: 10px;
+  background-color: transparent;
+  border: none;
+  color: #FFFFFF;
+}
+
+.socialButtons:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+  border: none;
+}
+
 .loader {
-  height: 100%;
+  padding: 40% 0;
 }
 
 a {

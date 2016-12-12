@@ -58,6 +58,7 @@ class Login extends Component {
     let style = {
       backgroundColor: '#FFFFFF',
       backgroundPositionY: '-10px',
+      backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       color: '#FFFFFF',
       background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://ubistatic-a.akamaihd.net/0021/community-intelligence/prod/article/56784c5484c3d.jpg")'
@@ -68,12 +69,11 @@ class Login extends Component {
       <div className="JSXWrapper">
 
         <div style={style} className="jumbotron">
-          <h2 className="col s12">Login Form</h2>
+          <h2 className="col s12 center-align">Login Form</h2>
         </div>
 
         <div id="auth" className="container">
           <div className="row">
-            <h3 className="col s12">Login Form</h3>
             <form onSubmit={this.formSubmit}>
               <div className="input-field col s6 xs12">
                 <i className="material-icons prefix">perm_identity</i>

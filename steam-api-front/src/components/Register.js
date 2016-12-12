@@ -50,6 +50,7 @@ class Register extends Component {
     let style = {
       backgroundColor: '#FFFFFF',
       backgroundPositionY: '-10px',
+      backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       color: '#FFFFFF',
       background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://ubistatic-a.akamaihd.net/0021/community-intelligence/prod/article/56784c5484c3d.jpg")'
@@ -59,7 +60,7 @@ class Register extends Component {
       <div className="JSXWrapper">
 
         <div style={style} className="jumbotron">
-          <h2 className="col s12">Registration Form</h2>
+          <h2 className="col s12 center-align">Registration Form</h2>
         </div>
 
         <div className="container">

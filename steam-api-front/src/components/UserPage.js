@@ -97,7 +97,7 @@ class AccountPage extends Component {
 
               <h4 className="section">ADD GAMES</h4>
               <p>Try adding a game here, start by typing the name of the game you want to add, then select your skill level in that game.</p>
-              <div>
+              <div className="section">
                 <form onSubmit={this.handleSubmit}>
                   <input className="gameInput col s6 xs12" type="text" ref="gameAddition" placeholder="Add some games! One at a time please." onChange={this.textChange} onSubmit={this.handleSubmit} />
 
@@ -109,8 +109,9 @@ class AccountPage extends Component {
                       <MenuItem value={'Hardcore'} primaryText="Hardcore" />
                     </SelectField>
                   </div>
-
-                  <button className="callToButtons btn col s3 offset-s3" onClick={this.handleSubmit}>Add Game</button>
+                  <div className="col s3 offset-s3">
+                    <button className="callToButtons btn" onClick={this.handleSubmit}>Add Game</button>
+                  </div>
                 </form>
               </div>
 
