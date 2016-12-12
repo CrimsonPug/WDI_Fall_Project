@@ -114,7 +114,8 @@ a {
   clear: both;
   background-color: #333;
   display: block;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   height: 70px;
   margin-top: -70px; 
 }
