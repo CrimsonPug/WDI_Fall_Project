@@ -56,12 +56,15 @@ class App extends Component {
           <div className="input-field col s10 valign">
             <form className="inlinetest" onSubmit={this.handleSubmit}>
               <div className="row valign-wrapper">
+
                 <div className="col s1">
                   <Link className="linkPad" to="/">LFG</Link>
                 </div>
+
                 <div className="col s3 searchForm">
                   <input type="text" name="submission" placeholder="Search for a game or user" onChange={this.handleChange} />
                 </div>
+
                 <div className="col s8 valign">
                   <p>
                     <Link className="linkPad" to="/search/">GAMES</Link>
@@ -70,19 +73,25 @@ class App extends Component {
                     <Link className="linkPad" to="/register">REGISTER</Link>
                   </p>
                 </div>
+
               </div>
             </form>
           </div>
+
           <div className="col s2">
             {loginMessage}
           </div>
+
         </div>
+
         <div className="childSpacer">
           {React.cloneElement(this.props.children, { submission: this.state.submission }, { handleClick: this.handleClick })}
         </div>
-        <footer className="footy">
+
+        <footer className="footy valign-wrapper">
           <a className="fa fa-github fa-3x socialButtons" href="https://github.com/frshock" />
           <a className="fa fa-linkedin fa-3x socialButtons" href="https://ca.linkedin.com/in/will-crane" />
+          <span className="right-align valign">Like this? Let me know @ will.s.crane@gmail.com!</span>
         </footer>
       </div>
     )

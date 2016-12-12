@@ -22,6 +22,8 @@
 .socialButtons {
   background-color: transparent;
   border: none;
+  padding: 15px;
+  position: relative;
   color: #FFFFFF;
 }
 
@@ -34,6 +36,10 @@
 .loader {
   margin-top: 30%;
   margin-bottom: 30%;
+}
+
+html, body {
+  height: 100%;
 }
 
 a {
