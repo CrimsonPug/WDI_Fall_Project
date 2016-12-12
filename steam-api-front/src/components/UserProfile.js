@@ -111,7 +111,6 @@ class UserProfile extends Component {
 
     render() {
         let profileInfo = this.state.profileInfo;
-        console.log(profileInfo);
         let style = {
             backgroundColor: '#FFFFFF',
             background: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(\'https://images4.alphacoders.com/681/681185.jpg\')',
@@ -136,17 +135,18 @@ class UserProfile extends Component {
                     </div>
                     <div className="container">
 
-                        <div>
+                        <div className="section">
                             <h5>ABOUT</h5>
                             <p>AGE: {this.state.age}</p>
                             <p>MEMBER SINCE: {this.state.accountCreated.replace(/T.*?Z/, '')}</p>
                             <p>{this.state.userBio}</p>
                         </div>
 
-                        <div>
-                            <p>Leave a comment!</p>
-                            <form onSubmit={this.handleSubmit}>
-                                <input className="gameInput" ref="commentBox" placeholder="Wanna join up? Leave them your details! (Eg. Steam ID, battle.net tag)" type="text" onChange={this.textChange} onSubmit={this.handleSubmit} />
+                        <div className="section">
+                            <h5>Leave a comment!</h5>
+                            <form className="row" onSubmit={this.handleSubmit}>
+                                <input className="gameInput col s8" ref="commentBox" placeholder="Wanna join up? Leave them your details! (Eg. Steam ID, battle.net tag)" type="text" onChange={this.textChange} onSubmit={this.handleSubmit} />
+                                <button className="btn col s2" onClick={this.handleSubmit}>SEND</button>
                             </form>
                         </div>
 
