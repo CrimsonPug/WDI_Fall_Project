@@ -80,6 +80,10 @@ class App extends Component {
         <div className="childSpacer">
           {React.cloneElement(this.props.children, { submission: this.state.submission }, { handleClick: this.handleClick })}
         </div>
+        <footer className="section footy">
+          <i className="fa fa-github fa-2x" href="https://github.com/frshock"></i>
+          <i className="fa fa-linkedin fa-2x" href="https://ca.linkedin.com/in/will-crane"></i>
+        </footer>
       </div>
     )
   }
